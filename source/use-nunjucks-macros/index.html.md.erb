@@ -1,0 +1,94 @@
+---
+title: Use Nunjucks macros
+weight: 45
+---
+
+# Use Nunjucks macros
+
+You can use Nunjucks macros to generate the HTML for components when you render a page.
+
+You can also change a component's HTML by passing options into the Nunjucks macro.
+
+If you use Nunjucks macros, your project will be easier to update when a new version of GOV.UK Frontend is released.
+
+To use Nunjucks macros:
+
+- you must [install GOV.UK Frontend with Node.js package manager (npm)](/installing-with-npm/)
+- your application and any frameworks that support it must be written in JavaScript
+
+You do not need to follow this guidance to [use Nunjucks macros in the GOV.UK Prototype Kit](https://design-system.service.gov.uk/get-started/prototyping/#using-nunjucks-macros).
+
+## Set up Nunjucks
+
+1. Make sure you installed Nunjucks when you [installed GOV.UK Frontend with npm](/installing-with-npm).
+
+2. Import the Nunjucks package at the top of your configuration file, for example:
+
+    ```javascript
+    const nunjucks = require('nunjucks')
+    ```
+
+3. Tell Nunjucks where to find the GOV.UK Frontend template and components by adding the following to your configuration file:
+
+    ```javascript
+    nunjucks.configure([
+      "node_modules/govuk-frontend/"
+    ], {
+      autoescape: true
+    })
+    ```
+
+    `autoescape: true` makes the output render as text by default, to help prevent cross-site scripting (XSS) attacks.
+
+4. Use the GOV.UK Frontend template by adding the following at the top of your view file:
+
+    ```javascript
+    {% extends "govuk/template.njk" %}
+    ```
+
+5. Go to the [default page template example](https://design-system.service.gov.uk/styles/page-template/#default) on the GOV.UK Design System website, then copy the Nunjucks code into your view file.
+
+## Importing a component
+
+You can go to any component page on the Design System website, then copy the code from the **Nunjucks** tab of any example.
+
+For example, to add the breadcrumbs component to your page, add the following code from the first example on the [breadcrumbs component page](https://design-system.service.gov.uk/components/breadcrumbs/):
+
+```javascript
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Passports, travel and living abroad",
+      href: "#"
+    },
+    {
+      text: "Travel abroad",
+      href: "#"
+    }
+  ]
+}) }}
+```
+
+## Changing a component
+
+You can use options to change the appearance, content or behaviour of a component when you use a Nunjucks macro.
+
+For example, use the `text` option to change the text on a [button](https://design-system.service.gov.uk/components/button/):
+
+```javascript
+{{ govukButton({
+    text: "Example button text"
+}) }}
+```
+
+To see the options for a component, select the **Nunjucks** tab of the component example on any Design System website page, then select **Nunjucks macro options**.
+
+There’s a different way to [change how the page template works](https://design-system.service.gov.uk/styles/page-template/#changing-template-content).
+
+You must sanitise any HTML you pass in to Nunjucks macros you’re using in your live application, to protect your website against cross-site scripting (XSS) attacks. Talk to your team’s security specialist about how to do this.
