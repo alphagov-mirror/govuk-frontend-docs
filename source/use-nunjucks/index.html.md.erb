@@ -48,6 +48,9 @@ You do not need to follow this guidance to [use Nunjucks macros in the GOV.UK Pr
 
 5. Go to the [default page template example](https://design-system.service.gov.uk/styles/page-template/#default) on the GOV.UK Design System website, then copy the Nunjucks code into your view file.
 
+
+Find out how to [change how the page template works](https://design-system.service.gov.uk/styles/page-template/#changing-template-content).
+
 ## Adding a component
 
 You can go to any component page on the Design System website, then copy the Nunjucks macro code from the **Nunjucks** tab of any example.
@@ -75,22 +78,11 @@ For example, to add the breadcrumbs component to your page, add the following co
 }) }}
 ```
 
-## Changing the HTML that's generated
+## Changing a component
 
-You can use options to change how the page template works, or how a component looks or behaves.
+You can use options to change how a component looks or behaves.
 
-You can use:
-
-- [page template options](https://design-system.service.gov.uk/styles/page-template/#changing-template-content)
-- component options - select the **Nunjucks** tab of the component example on any Design System website page, then select **Nunjucks macro options**
-
-How you set an option depends on whether it's a 'variable' option or a 'block' option.
-
-### Variable options
-
-If an option is a 'variable' option, use `set` to pass in a single value or string.
-
-For example, to change the text on a [button](https://design-system.service.gov.uk/components/button/) using the `text` option:
+For example, use the `text` option to change the text on a [button](https://design-system.service.gov.uk/components/button/):
 
 ```javascript
 {{ govukButton({
@@ -98,20 +90,6 @@ For example, to change the text on a [button](https://design-system.service.gov.
 }) }}
 ```
 
-### Block options
-
-If an option is a 'block' option, use `block` to pass in a multiline value or HTML markup.
-
-For example, to add a block of HTML before the closing </body> element in the page template using the `bodyEnd` option:
-
-```javascript
-{% raw %}
-{% block bodyEnd %}
-  <div>
-     <p>Example text</p>
-  </div>
-{% endblock %}
-{% endraw %}
-```
+To see the options for a component, select the **Nunjucks** tab of the component example on any Design System website page, then select **Nunjucks macro options**.
 
 You must sanitise any HTML you pass in to Nunjucks macros you’re using in your live application, to protect your website against cross-site scripting (XSS) attacks. Talk to your team’s security specialist about how to do this.
