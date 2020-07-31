@@ -55,28 +55,7 @@ Find out how to [change how the page template works](https://design-system.servi
 
 You can go to any component page on the Design System website, then copy the Nunjucks macro code from the **Nunjucks** tab of any example.
 
-For example, to add the breadcrumbs component to your page, add the following code from the first example on the [breadcrumbs component page](https://design-system.service.gov.uk/components/breadcrumbs/):
-
-```javascript
-{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
-
-{{ govukBreadcrumbs({
-  items: [
-    {
-      text: "Home",
-      href: "#"
-    },
-    {
-      text: "Passports, travel and living abroad",
-      href: "#"
-    },
-    {
-      text: "Travel abroad",
-      href: "#"
-    }
-  ]
-}) }}
-```
+For example, to add the breadcrumbs component to your page, copy the code from the **Nunjucks** tab in the first example on the [breadcrumbs component page](https://design-system.service.gov.uk/components/breadcrumbs/).
 
 ## Changing a component
 
