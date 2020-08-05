@@ -20,25 +20,23 @@ You do not need to follow this guidance to [use Nunjucks macros in the GOV.UK Pr
 
 ## Set up Nunjucks and use the page template
 
-1. Make sure you installed Nunjucks when you [installed GOV.UK Frontend with npm](/installing-with-npm).
+How you set up Nunjucks will depend on your environment. You can do the following to set up Nunjucks if you're using [Express](https://expressjs.com/).
 
-2. Import the Nunjucks package at the top of your configuration file, for example:
+1. Make sure Nunjucks is installed. For example, you can install Nunjucks while you're [installing GOV.UK Frontend with npm](/installing-with-npm).
+
+2. Import the Nunjucks package, for example at the top of your main application file:
 
     ```javascript
     const nunjucks = require('nunjucks')
     ```
 
-3. Tell Nunjucks where to find the GOV.UK Frontend template and components by adding the following to your configuration file:
+3. Tell Nunjucks where to find the GOV.UK Frontend template and components, by adding the following to your main application file:
 
     ```javascript
     nunjucks.configure([
       "node_modules/govuk-frontend/"
-    ], {
-      autoescape: true
-    })
+    ])
     ```
-
-    `autoescape: true` makes the output render as text by default, to help prevent cross-site scripting (XSS) attacks.
 
 4. Use the GOV.UK Frontend template by adding the following at the top of your view file:
 
@@ -47,7 +45,6 @@ You do not need to follow this guidance to [use Nunjucks macros in the GOV.UK Pr
     ```
 
 5. Go to the [default page template example](https://design-system.service.gov.uk/styles/page-template/#default) on the GOV.UK Design System website, then copy the Nunjucks code into your view file.
-
 
 Find out how to [change how the page template works](https://design-system.service.gov.uk/styles/page-template/#changing-template-content).
 
@@ -71,4 +68,4 @@ For example, use the `text` option to change the text on a [button](https://desi
 
 To see the options for a component, select the **Nunjucks** tab of the component example on any Design System website page, then select **Nunjucks macro options**.
 
-You must sanitise any HTML you pass in to Nunjucks macros you’re using in your live application, to protect your website against cross-site scripting (XSS) attacks. Talk to your team’s security specialist about how to do this.
+You must sanitise any HTML you pass in to Nunjucks macros you’re using in your live application, to protect your website against cross-site scripting (XSS) attacks. You can read more about [XSS](https://developer.mozilla.org/en-US/docs/Web/Security/Types_of_attacks#Cross-site_scripting_XSS) on the MDN website.
